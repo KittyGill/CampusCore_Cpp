@@ -1,0 +1,44 @@
+Let's split CampusCore into versions.
+
+CampusCore v0.1 (Week 1)
+Student model
+Faculty model
+Course model
+Admin login
+CRUD
+Save/Load
+
+This teaches:
+
+Classes
+Constructors
+Encapsulation
+Vectors
+File handling
+CampusCore v0.2
+
+Add:
+
+Course Slots
+Registration
+Faculty Allocation
+
+Now you naturally learn:
+
+Relationships between objects
+Searching
+Validation
+Scheduling logic
+CampusCore v0.3
+
+Add:
+
+Marks Entry
+GPA Calculation
+Transcript
+
+Now you'll work with:
+
+More complex algorithms
+Data aggregation
+Business rules
