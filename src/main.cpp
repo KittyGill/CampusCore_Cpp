@@ -32,5 +32,31 @@ int main()
 
     manager.viewStudents();
 
+    Student* foundStudent = manager.searchStudent(101);
+
+    if (foundStudent != nullptr)
+    {
+        std::cout << "Student Found!" << std::endl;
+        foundStudent->displayStudent();
+    }
+    else
+    {
+        std::cout << "Student not found." << std::endl;
+    }
+
+
+    Student updatedStudent(
+    101,
+    "Christopher Gill",
+    21,
+    "BSCS",
+    6,
+    3.95
+    );
+    
+    manager.updateStudent(101, updatedStudent);
+    manager.deleteStudent(102);
+    manager.viewStudents();
+
     return 0;
 }
