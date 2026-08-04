@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Student.h"
 
 Student::Student()
@@ -93,3 +94,16 @@ const std::vector<std::string> Student::getRegisteredCourses() const
     return registeredCourses;
 }
 
+// Display Student should not belong in the models, infact any display function shouldnt, this would be moved to UI classes in future.
+void Student::displayStudent() const
+{
+    std::cout << "Inside viewStudents()" << std::endl;
+
+    std::cout << "ID: " << id << std::endl;
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Age: " << age << std::endl;
+    std::cout << "Batch: " << batch << std::endl;
+    std::cout << "Semester: " << currentSemester << std::endl;
+    std::cout << "CGPA: " << cgpa << std::endl;
+    std::cout << "------------------------" << std::endl;
+}
