@@ -1,7 +1,8 @@
 // main.cpp is currently being used for testing purposes. The final version of the main.cpp file will be used to run the application.
 #include <iostream>
 #include "managers/StudentManager.h"
-
+#include "models/Student.h"
+#include "utils/Validation.h"
     StudentManager manager;
 
 int main()
@@ -41,16 +42,20 @@ int main()
                 std::cout << "Enter Student ID: ";
                 std::cin.ignore();
                 std::getline(std::cin, id);
+
                 std::cout << "Enter Student Name: ";
-                std::cin.ignore();
                 std::getline(std::cin, name);
+
                 std::cout << "Enter Student Age: ";
                 std::cin >> age;
+
                 std::cout << "Enter Student Batch: ";
                 std::cin.ignore();
                 std::getline(std::cin, batch);
+
                 std::cout << "Enter Student Semester: ";
                 std::cin >> semester;
+
                 std::cout << "Enter Student CGPA: ";
                 std::cin >> cgpa;
 
