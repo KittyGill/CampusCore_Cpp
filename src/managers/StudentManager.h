@@ -11,7 +11,7 @@ private:
 public:
     StudentManager();
 
-    void addStudent(const Student& student);
+    bool addStudent(const Student& student);
 
     void viewStudents() const;
 
@@ -20,4 +20,8 @@ public:
     bool updateStudent(const std::string& id, const Student& updatedStudent);
 
     bool deleteStudent(const std::string& id);
+
+private:
+    bool validateStudent(const Student& student);    
 };
+

@@ -1,9 +1,9 @@
 #include "Validation.h"
+#include <cctype>
 
-bool Validation::isValidId(int id)
-{
-    return id > 0;
-}
+//==========================
+// Generic Validation
+//==========================
 
 bool Validation::isValidName(const std::string& name)
 {
@@ -15,11 +15,6 @@ bool Validation::isValidAge(int age)
     return age > 0 && age <= 100;
 }
 
-bool Validation::isValidBatch(const std::string& batch)
-{
-    return !batch.empty();
-}
-
 bool Validation::isValidSemester(int semester)
 {
     return semester >= 1 && semester <= 8;
@@ -28,4 +23,100 @@ bool Validation::isValidSemester(int semester)
 bool Validation::isValidCGPA(float cgpa)
 {
     return cgpa >= 0.0f && cgpa <= 4.0f;
+}
+
+bool Validation::isValidBatch(const std::string& batch)
+{
+    return !batch.empty();
+}
+
+bool Validation::isValidCreditHours(int creditHours)
+{
+    return creditHours >= 1 && creditHours <= 3;
+}
+
+// =========================
+// Student Validation
+// =========================
+
+bool Validation::isValidStudentID(const std::string& id)
+{
+    // Format: S001
+
+    if (id.length() != 4)
+        return false;
+
+    if (id[0] != 'S')
+        return false;
+
+    for (int i = 1; i < 4; i++)
+    {
+        if (!isdigit(id[i]))
+            return false;
+    }
+
+    return true;
+}
+
+// =========================
+// Faculty Validation
+// =========================
+
+bool Validation::isValidFacultyID(const std::string& id)
+{
+    if (id.length() != 4)
+        return false;
+
+    if (id[0] != 'F')
+        return false;
+
+    for (int i = 1; i < 4; i++)
+    {
+        if (!isdigit(id[i]))
+            return false;
+    }
+
+    return true;
+}
+
+// =========================
+// Course Validation
+// =========================
+
+bool Validation::isValidCourseID(const std::string& id)
+{
+    if (id.length() != 4)
+        return false;
+
+    if (id[0] != 'C')
+        return false;
+
+    for (int i = 1; i < 4; i++)
+    {
+        if (!isdigit(id[i]))
+            return false;
+    }
+
+    return true;
+}
+
+// =========================
+// Course Slot Validation
+// =========================
+
+bool Validation::isValidCourseSlotID(const std::string& id)
+{
+    if (id.length() != 5)
+        return false;
+
+    if (id[0] != 'C' || id[1] != 'S')
+        return false;
+
+    for (int i = 2; i < 5; i++)
+    {
+        if (!isdigit(id[i]))
+            return false;
+    }
+
+    return true;
 }
