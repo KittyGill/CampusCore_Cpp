@@ -7,7 +7,7 @@
 class Student
 {
 private:
-    int id;
+    std::string id;
     std::string name;
     int age;
     std::string batch;
@@ -18,7 +18,7 @@ private:
 public:
     // Constructors
     Student();
-    Student(int id,
+    Student(std::string id,
             std::string name,
             int age,
             std::string batch,
@@ -26,7 +26,7 @@ public:
             float cgpa);
 
     // Getters
-    int getId() const;
+    std::string getId() const;
     std::string getName() const;
     int getAge() const;
     std::string getBatch() const;
@@ -35,10 +35,10 @@ public:
     const std::vector<std::string> getRegisteredCourses() const;
 
     // Setters
-    void setId(int id);
+    void setId(const std::string& id);
     void setName(const std::string& name);
     void setAge(int age);
-    void setBatch( const std::string& batch);
+    void setBatch(const std::string& batch);
     void setCurrentSemester(int semester);
     void setCGPA(float cgpa);
 

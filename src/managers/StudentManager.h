@@ -15,9 +15,9 @@ public:
 
     void viewStudents() const;
 
-    Student* searchStudent(int id);
+    Student* searchStudent(const std::string& id);
 
-    bool updateStudent(int id, const Student& updatedStudent);
+    bool updateStudent(const std::string& id, const Student& updatedStudent);
 
-    bool deleteStudent(int id);
+    bool deleteStudent(const std::string& id);
 };

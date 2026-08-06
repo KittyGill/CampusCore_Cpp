@@ -10,7 +10,7 @@ int main()
 
     int choice;
 
-    int id;
+    std::string id;
     std::string name;
     int age;
     std::string batch;
@@ -39,7 +39,8 @@ int main()
                 std::cout << "Add Student Selected.\n";
                 
                 std::cout << "Enter Student ID: ";
-                std::cin >> id;
+                std::cin.ignore();
+                std::getline(std::cin, id);
                 std::cout << "Enter Student Name: ";
                 std::cin.ignore();
                 std::getline(std::cin, name);
@@ -88,7 +89,8 @@ int main()
             {
                 std::cout << "Update Student Selected.\n";
                 std::cout << "Enter Student ID to update: ";
-                std::cin >> id;
+                std::cin.ignore();
+                std::getline(std::cin, id);
                 std::cout << "Enter updated Student Name: ";
                 std::cin.ignore();
                 std::getline(std::cin, name);

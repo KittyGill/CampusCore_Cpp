@@ -24,7 +24,7 @@ void StudentManager::viewStudents() const
     }
 }
 
-Student* StudentManager::searchStudent(int id)
+Student* StudentManager::searchStudent(const std::string& id)
 {
     for (Student& student : students)
     {
@@ -37,7 +37,7 @@ Student* StudentManager::searchStudent(int id)
     return nullptr;
 }
 
-bool StudentManager::updateStudent(int id, const Student& updatedStudent)
+bool StudentManager::updateStudent(const std::string& id, const Student& updatedStudent)
 {
     Student* student = searchStudent(id);
 
@@ -50,7 +50,7 @@ bool StudentManager::updateStudent(int id, const Student& updatedStudent)
     return false;
 }
 
-bool StudentManager::deleteStudent(int id)
+bool StudentManager::deleteStudent(const std::string& id)
 {
     for (auto it = students.begin(); it != students.end(); ++it)
     {

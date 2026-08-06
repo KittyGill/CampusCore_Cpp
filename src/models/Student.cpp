@@ -3,7 +3,7 @@
 
 Student::Student()
 {
-    id = 0;
+    id = "";
     name = "";
     age = 0;
     batch = "";
@@ -11,7 +11,7 @@ Student::Student()
     cgpa = 0.0f;
 }
 
-Student::Student(int id,
+Student::Student(std::string id,
                  std::string name,
                  int age,
                  std::string batch,
@@ -27,7 +27,7 @@ Student::Student(int id,
 }
 
 // Setters
-void Student::setId(int id)
+void Student::setId(const std::string& id)
 {
     this->id = id;
 }
@@ -59,7 +59,7 @@ void Student::setCGPA(float cgpa)
 
 // Getters
 
-int Student::getId() const
+std::string Student::getId() const
 {
     return id;
 }
