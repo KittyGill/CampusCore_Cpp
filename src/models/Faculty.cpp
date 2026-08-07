@@ -1,15 +1,15 @@
 #include "Faculty.h"
-
+#include <iostream>
 Faculty::Faculty()
 {
-    id = 0;
+    id = "";
     name = "";
     age = 0;
     department = "";
     joiningDate = "";
 }
 
-Faculty::Faculty(int id,
+Faculty::Faculty(const std::string& id,
                  const std::string& name,
                  int age,
                  const std::string& department,
@@ -23,7 +23,7 @@ Faculty::Faculty(int id,
 }
 
 // Setters
-void Faculty::setId(int id)
+void Faculty::setId(const std::string& id)
 {
     this->id = id;
 }
@@ -50,7 +50,7 @@ void Faculty::setJoiningDate(const std::string& joiningDate)
 
 // Getters
 
-int Faculty::getId() const
+std::string Faculty::getId() const
 {
     return id;
 }
@@ -80,3 +80,14 @@ const std::vector<std::string> Faculty::getCoursesTeaching() const
     return coursesTeaching;
 }
 
+void Faculty::displayFaculty() const
+{
+    std::cout << "Inside viewFaculties()" << std::endl;
+
+    std::cout << "ID: " << id << std::endl;
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Age: " << age << std::endl;
+    std::cout << "Department: " << department << std::endl;
+    std::cout << "Joining Date: " << joiningDate << std::endl;
+    std::cout << "------------------------" << std::endl;
+}

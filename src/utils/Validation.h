@@ -24,6 +24,8 @@ public:
     // Faculty Validation
     //==========================
     static bool isValidFacultyID(const std::string& id);
+    static bool isValidDepartment(const std::string& department);
+    static bool isValidJoiningDate(const std::string& joiningDate);
 
     //==========================
     // Course Validation

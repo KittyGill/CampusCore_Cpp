@@ -79,6 +79,32 @@ bool Validation::isValidFacultyID(const std::string& id)
     return true;
 }
 
+bool Validation::isValidDepartment(const std::string& department)
+{
+    return !department.empty();
+}
+
+bool Validation::isValidJoiningDate(const std::string& joiningDate)
+{
+    // Format: YYYY-MM-DD
+    if (joiningDate.length() != 10)
+        return false;
+
+    if (joiningDate[4] != '-' || joiningDate[7] != '-')
+        return false;
+
+    for (int i = 0; i < joiningDate.length(); i++)
+    {
+        if (i == 4 || i == 7)
+            continue;
+
+        if (!isdigit(joiningDate[i]))
+            return false;
+    }
+
+    return true;
+}
+
 // =========================
 // Course Validation
 // =========================

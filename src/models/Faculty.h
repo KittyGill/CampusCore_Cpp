@@ -7,7 +7,7 @@
 class Faculty
 {
 private:
-    int id;
+    std::string id;
     std::string name;
     int age;
     std::string department;
@@ -17,14 +17,14 @@ private:
 public:
     // Constructors
     Faculty();
-    Faculty(int id,
+    Faculty(const std::string& id,
         const std::string& name,
         int age,
         const std::string& department,
         const std::string& joiningDate);
 
     // Getters
-    int getId() const;
+    std::string getId() const;
     std::string getName() const;
     int getAge() const;
     std::string getDepartment() const;
@@ -32,7 +32,7 @@ public:
     const std::vector<std::string> getCoursesTeaching() const;
 
     // Setters
-    void setId(int id);
+    void setId(const std::string& id);
     void setName(const std::string& name);
     void setAge(int age);
     void setDepartment(const std::string& department);
