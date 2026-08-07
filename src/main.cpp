@@ -38,26 +38,75 @@ int main()
             case 1:
             {
                 std::cout << "Add Student Selected.\n";
-                
-                std::cout << "Enter Student ID: ";
-                std::cin.ignore();
-                std::getline(std::cin, id);
 
-                std::cout << "Enter Student Name: ";
-                std::getline(std::cin, name);
+                // Clear the newline left by std::cin >> choice
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-                std::cout << "Enter Student Age: ";
-                std::cin >> age;
+                while (true)
+                {
+                    std::cout << "Enter Student ID: ";
+                    std::getline(std::cin, id);
 
-                std::cout << "Enter Student Batch: ";
-                std::cin.ignore();
-                std::getline(std::cin, batch);
+                    if (Validation::isValidStudentID(id))
+                        break;
 
-                std::cout << "Enter Student Semester: ";
-                std::cin >> semester;
+                    std::cout << "Invalid Student ID! Please enter again.\n";
+                }
 
-                std::cout << "Enter Student CGPA: ";
-                std::cin >> cgpa;
+                while (true)
+                {
+                    std::cout << "Enter Student Name: ";
+                    std::getline(std::cin, name);
+
+                    if (Validation::isValidName(name))
+                        break;
+
+                    std::cout << "Invalid Student Name! Please enter again.\n";
+                }
+
+                while (true)
+                {
+                    std::cout << "Enter Student Age: ";
+                    std::cin >> age;
+
+                    if (Validation::isValidAge(age))
+                        break;
+
+                    std::cout << "Invalid Student Age! Please enter again.\n";
+                }
+
+                while (true)
+                {
+                    std::cout << "Enter Student Batch: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, batch);
+                    
+                    if (Validation::isValidBatch(batch))
+                        break;
+                    std::cout << "Invalid Student Batch! Please enter again.\n";
+                }
+
+                while (true)
+                {
+                    std::cout << "Enter Student Semester: ";
+                    std::cin >> semester;
+
+                    if (Validation::isValidSemester(semester))
+                        break;
+
+                    std::cout << "Invalid Student Semester! Please enter again.\n";
+                }
+
+                while (true)
+                {
+                    std::cout << "Enter Student CGPA: ";
+                    std::cin >> cgpa;
+
+                    if (Validation::isValidCGPA(cgpa))
+                        break;
+
+                    std::cout << "Invalid Student CGPA! Please enter again.\n";
+                }
 
                 Student student(id, name, age, batch, semester, cgpa);
                 manager.addStudent(student);
