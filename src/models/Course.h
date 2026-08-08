@@ -2,7 +2,6 @@
 #define COURSE_H
 
 #include <string>
-#include <vector>
 
 enum class CourseType
 {
@@ -14,28 +13,37 @@ class Course
 {
 private:
     std::string courseCode;
-    std::string courseName;
+    std::string name;
     int creditHours;
     CourseType courseType;
+    std::string prerequisiteCourseCode;
+    int tuitionFee;
+
 public:
     // Constructors
     Course();
     Course(const std::string& courseCode,
-            const std::string& courseName,
-            int creditHours,
-            CourseType courseType);
+        const std::string& name,
+        int creditHours,
+        CourseType courseType,
+        const std::string& prerequisiteCourseCode,
+        int tuitionFee);
 
     // Getters
     std::string getCourseCode() const;
-    std::string getCourseName() const;
+    std::string getName() const;
     int getCreditHours() const;
     CourseType getCourseType() const;
+    std::string getPrerequisiteCourseCode() const;
+    int getTuitionFee() const;
 
     // Setters
     void setCourseCode(const std::string& courseCode);
-    void setCourseName(const std::string& courseName);
+    void setName(const std::string& name);
     void setCreditHours(int creditHours);
     void setCourseType(CourseType courseType);
+    void setPrerequisiteCourseCode(const std::string& prerequisiteCourseCode);
+    void setTuitionFee(int tuitionFee);
 
     // Display
     void displayCourse() const;

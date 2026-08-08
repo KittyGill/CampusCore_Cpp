@@ -4,11 +4,13 @@
 #include "managers/StudentManager.h"
 #include "models/Faculty.h"
 #include "managers/FacultyManager.h"
+#include "models/Course.h"
+#include "managers/CourseManager.h"
 #include "utils/Validation.h"
 
     StudentManager manager;
     FacultyManager facultyManager;
-
+    CourseManager courseManager;
 int main()
 {
     std::cout << "Program Started!" << std::endl;
@@ -26,22 +28,33 @@ int main()
     //Faculty variables
     std::string department;
     std::string joiningDate;
+    //Course Variables
+    int creditHours;
+    std::string courseCode;
+    CourseType courseType;
+    std::string prerequisiteCourseCode;
+    int tuitionFee;
 
     do
     {
         std::cout << "\n==================================\n";
         std::cout << "        CampusCore v0.1\n";
         std::cout << "==================================\n";
-        std::cout << "1. Add Student\n";
+        std::cout << "\n1. Add Student\n";
         std::cout << "2. View Students\n";
         std::cout << "3. Search Student\n";
         std::cout << "4. Update Student\n";
         std::cout << "5. Delete Student\n";
-        std::cout << "6. Add Faculty\n";
+        std::cout << "\n6. Add Faculty\n";
         std::cout << "7. View Faculties\n";
         std::cout << "8. Search Faculty\n";
         std::cout << "9. Update Faculty\n";
         std::cout << "10. Delete Faculty\n";
+        std::cout << "\n11. Add Course\n";
+        std::cout << "12. View Courses\n";
+        std::cout << "13. Search Course\n";
+        std::cout << "14. Update Course\n";
+        std::cout << "15. Delete Course\n";
         std::cout << "0. Exit\n";
         std::cout << "\nEnter your choice: ";
 
@@ -184,7 +197,8 @@ int main()
                 manager.deleteStudent(id);
                 break;
             }
-
+            
+            // Faculty cases
             case 6:
             {
                 std::cout << "Add Faculty Selected.\n";
@@ -305,6 +319,163 @@ int main()
                 std::cout << "Enter Faculty ID to delete: ";
                 std::cin >> id;
                 facultyManager.deleteFaculty(id);
+                break;
+            }
+            
+            //Course cases
+            case 11:
+            {
+                std::cout << "Add Course Selected.\n";
+
+                // Clear the newline left by std::cin >> choice
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+                while (true)
+                {
+                    std::cout << "Enter Course Code: ";
+                    std::getline(std::cin, courseCode);
+
+                    if (Validation::isValidCourseCode(courseCode))
+                        break;
+
+                    std::cout << "Invalid Course Code! Please enter again.\n";
+                }
+
+                while (true)
+                {
+                    std::cout << "Enter Course Name: ";
+                    std::getline(std::cin, name);
+
+                    if (Validation::isValidName(name))
+                        break;
+
+                    std::cout << "Invalid Course Name! Please enter again.\n";
+                }
+
+                while (true)
+                {
+                    std::cout << "Enter Course Credit Hours: ";
+                    std::cin >> creditHours;
+
+                    if (Validation::isValidCreditHours(creditHours))
+                        break;
+
+                    std::cout << "Invalid Course Credit Hours! Please enter again.\n";
+                }
+
+                while (true)
+                {
+                    std::cout << "Enter Course Type:\n";
+                    std::cout << "1. Mandatory\n";
+                    std::cout << "2. Elective\n";
+                    std::cout << "Enter choice: ";
+
+                    int typeChoice;
+                    std::cin >> typeChoice;
+
+                    if (typeChoice == 1)
+                    {
+                        courseType = CourseType::Mandatory;
+                        break;
+                    }
+
+                    if (typeChoice == 2)
+                    {
+                        courseType = CourseType::Elective;
+                        break;
+                    }
+
+                    std::cout << "Invalid Course Type! Please enter again.\n";
+                }
+
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+                while (true)
+                {
+                    std::cout << "Enter Course Prerequisite: ";
+                    std::getline(std::cin, prerequisiteCourseCode);
+                    
+                    if (Validation::isValidPrerequisiteCourseCode(prerequisiteCourseCode))
+                        break;
+                    std::cout << "Invalid Course Prerequisite! Please enter again.\n";
+                }
+
+                while (true)
+                {
+                    std::cout << "Enter Course Tuition Fee: ";
+                    std::cin >> tuitionFee;
+
+                    if (Validation::isValidTuitionFee(tuitionFee))
+                        break;
+                    std::cout << "Invalid Course Tuition Fee! Please enter again.\n";
+                }
+
+
+                Course course(courseCode, name, creditHours, courseType, prerequisiteCourseCode, tuitionFee);
+                courseManager.addCourse(course);
+
+                break;
+            }
+
+            case 12:
+            {
+                std::cout << "View Courses Selected.\n";
+                courseManager.viewCourses();
+                break;
+            }
+
+            case 13:
+            {
+                std::cout << "Search Course Selected.\n";
+                std::cout << "Enter Course Code to search: ";
+                std::cin >> courseCode;
+                Course* foundCourse = courseManager.searchCourse(courseCode);
+                if (foundCourse != nullptr)
+                {
+                    std::cout << "Course Found!" << std::endl;
+                    foundCourse->displayCourse();
+                }
+                else
+                {
+                    std::cout << "Course not found." << std::endl;
+                }
+                break;
+            }
+
+            case 14:
+            {
+                std::cout << "Update Course Selected.\n";
+                std::cout << "Enter Course Code to update: ";
+                std::cin.ignore();
+                std::getline(std::cin, courseCode);
+                std::cout << "Enter updated Course Name: ";
+                std::cin.ignore();
+                std::getline(std::cin, name);
+                std::cout << "Enter updated Course Credit Hours: ";
+                std::cin >> creditHours;
+                std::cout << "Enter updated Course Type:\n";
+                std::cout << "1. Mandatory\n";
+                std::cout << "2. Elective\n";
+                int typeChoice;
+                std::cin >> typeChoice;
+                if (typeChoice == 1)
+                    courseType = CourseType::Mandatory;
+                else if (typeChoice == 2)
+                    courseType = CourseType::Elective;
+                else
+                {
+                    std::cout << "Invalid Course Type! Defaulting to Mandatory.\n";                    
+                    courseType = CourseType::Mandatory;
+                }        
+
+                std::cout << "Enter updated Course Prerequisite: ";
+                std::cin.ignore();
+                std::getline(std::cin, prerequisiteCourseCode);
+                std::cout << "Enter updated Course Tuition Fee: ";
+                std::cin >> tuitionFee;
+
+                Course updatedCourse(courseCode, name, creditHours, courseType, prerequisiteCourseCode, tuitionFee);
+                courseManager.updateCourse(courseCode, updatedCourse);
                 break;
             }
 

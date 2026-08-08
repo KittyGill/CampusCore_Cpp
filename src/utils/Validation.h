@@ -2,6 +2,7 @@
 #define VALIDATION_H
 
 #include <string>
+#include "../models/Course.h"
 
 class Validation
 {
@@ -30,8 +31,11 @@ public:
     //==========================
     // Course Validation
     //==========================
-    static bool isValidCourseID(const std::string& id);
+    static bool isValidCourseCode(const std::string& id);
     static bool isValidCreditHours(int creditHours);
+    static bool isValidCourseType(CourseType courseType);
+    static bool isValidPrerequisiteCourseCode(const std::string& prerequisiteCourseCode);
+    static bool isValidTuitionFee(int tuitionFee);
 
     //==========================
     // Course Slot Validation

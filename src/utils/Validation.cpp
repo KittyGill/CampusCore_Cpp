@@ -109,21 +109,37 @@ bool Validation::isValidJoiningDate(const std::string& joiningDate)
 // Course Validation
 // =========================
 
-bool Validation::isValidCourseID(const std::string& id)
+bool Validation::isValidCourseCode(const std::string& id)
 {
-    if (id.length() != 4)
+    if (id.length() != 5)
         return false;
 
     if (id[0] != 'C')
         return false;
 
-    for (int i = 1; i < 4; i++)
+    for (int i = 1; i < 5; i++)
     {
         if (!isdigit(id[i]))
             return false;
     }
 
     return true;
+}
+
+bool Validation::isValidCourseType(CourseType courseType)
+{
+    return courseType == CourseType::Mandatory || courseType == CourseType::Elective;
+}
+
+bool Validation::isValidPrerequisiteCourseCode(const std::string& prerequisiteCourseCode)
+{
+    // Prerequisite course code can be empty or a valid course code
+    return prerequisiteCourseCode.empty() || isValidCourseCode(prerequisiteCourseCode);
+}
+
+bool Validation::isValidTuitionFee(int tuitionFee)
+{
+    return tuitionFee >= 15000 && tuitionFee <= 25000;
 }
 
 // =========================
