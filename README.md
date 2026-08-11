@@ -101,7 +101,7 @@ This project focuses on learning and applying:
 
 - [x] Project Setup
 - [x] Models Layer
-- [ ] CRUD Managers
+- [X] CRUD Managers
 - [ ] Authentication
 - [ ] File Storage
 
