@@ -62,17 +62,17 @@ bool Validation::isValidStudentID(const std::string& id)
 // Faculty Validation
 // =========================
 
-bool Validation::isValidFacultyID(const std::string& id)
+bool Validation::isValidFacultyID(const std::string& facultyID)
 {
-    if (id.length() != 4)
+    if (facultyID.length() != 4)
         return false;
 
-    if (id[0] != 'F')
+    if (facultyID[0] != 'F')
         return false;
 
     for (int i = 1; i < 4; i++)
     {
-        if (!isdigit(id[i]))
+        if (!isdigit(facultyID[i]))
             return false;
     }
 
@@ -146,19 +146,43 @@ bool Validation::isValidTuitionFee(int tuitionFee)
 // Course Slot Validation
 // =========================
 
-bool Validation::isValidCourseSlotID(const std::string& id)
+bool Validation::isValidCourseSlotCode(const std::string& courseSlotCode)
 {
-    if (id.length() != 5)
+    if (courseSlotCode.length() != 5)
         return false;
 
-    if (id[0] != 'C' || id[1] != 'S')
+    if (courseSlotCode[0] != 'C' || courseSlotCode[1] != 'S')
         return false;
 
     for (int i = 2; i < 5; i++)
     {
-        if (!isdigit(id[i]))
+        if (!isdigit(courseSlotCode[i]))
             return false;
     }
 
     return true;
+}
+
+bool Validation::isValidDays(Days days)
+{
+    return days == Days::MonWed || days == Days::TueThu || days == Days::FriSat ||
+           days == Days::MonWedFri || days == Days::TueThuSat;
+}
+
+bool Validation::isValidTime(Time time)
+{
+    return time == Time::Morning_0830_0930 || time == Time::Morning_0830_1000 ||
+           time == Time::Noon_1200_1300 || time == Time::Noon_1200_1400 ||
+           time == Time::Afternoon_1400_1500 || time == Time::Afternoon_1500_1600 ||
+           time == Time::Evening_1600_1700 || time == Time::Evening_1700_1800;
+}
+
+bool Validation::isValidSeatsAvailable(int seatsAvailable)
+{
+    return seatsAvailable >= 0 && seatsAvailable <= 50;
+}
+
+bool Validation::isValidClassRoom(int classRoom)
+{
+    return classRoom >= 1 && classRoom <= 100;
 }

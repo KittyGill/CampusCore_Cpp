@@ -3,6 +3,7 @@
 
 #include <string>
 #include "../models/Course.h"
+#include "../models/CourseSlot.h"
 
 class Validation
 {
@@ -24,7 +25,7 @@ public:
     //==========================
     // Faculty Validation
     //==========================
-    static bool isValidFacultyID(const std::string& id);
+    static bool isValidFacultyID(const std::string& facultyID);
     static bool isValidDepartment(const std::string& department);
     static bool isValidJoiningDate(const std::string& joiningDate);
 
@@ -40,7 +41,16 @@ public:
     //==========================
     // Course Slot Validation
     //==========================
-    static bool isValidCourseSlotID(const std::string& id);
+
+    static bool isValidCourseSlotCode(const std::string& courseSlotCode);
+
+    static bool isValidDays(Days days);
+
+    static bool isValidTime(Time time);
+
+    static bool isValidSeatsAvailable(int seatsAvailable);
+
+    static bool isValidClassRoom(int classRoom);
 };
 
 #endif
