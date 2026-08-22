@@ -61,15 +61,17 @@ CampusCore serves as the first milestone before moving towards larger C++ projec
 ```
 CampusCore/
 │
+├── data/
+│
+├── docs/
+│
 ├── src/
-│   ├── models/
 │   ├── managers/
+│   ├── models/
 │   ├── authentication/
-│   ├── storage/
 │   ├── utils/
 │   └── main.cpp
 │
-├── docs/
 │
 ├── README.md
 │
@@ -101,9 +103,9 @@ This project focuses on learning and applying:
 
 - [x] Project Setup
 - [x] Models Layer
-- [X] CRUD Managers
-- [ ] Authentication
+- [x] CRUD Managers
 - [ ] File Storage
+- [ ] Authentication
 
 ---
 
@@ -145,10 +147,11 @@ This project focuses on learning and applying:
 - Faculty Model
 - Course Model
 - Admin Model
+- CRUD Manager Classes
 
 ## Currently Working On
 
-- CRUD Manager Classes
+- Data Storing/Serialization
 
 ---
 
